@@ -1,0 +1,43 @@
+# Prof. dr hab. n. med. Aleksandra Jezela-Stanek
+
+> Personal academic website of Prof. Aleksandra Jezela-Stanek — specialist in clinical genetics (Specjalista genetyki klinicznej, MBA w ochronie zdrowia z badaniami klinicznymi). It presents verified research areas, clinical genetics expertise, selected publications and professional collaborations. Primary language: Polish.
+
+Research interests: clinical and medical genetics, pulmogenetics (genetic basis of lung disease), rare and ultra-rare diseases, oncogenetics, pharmacogenetics, molecular diagnostics and genomic sequencing (WES, WGS, RNA analysis).
+
+Current institution: Instytut Gruźlicy i Chorób Płuc (National Institute of Tuberculosis and Lung Diseases), Department of Genetics and Clinical Immunology, Warsaw, Poland.
+
+## Main sections
+
+- [O mnie / About](https://example.org/o-mnie/): biography and affiliations
+- [Nauka i projekty / Research](https://example.org/nauka-i-projekty/): research areas
+- [Zakres działalności / Areas of expertise](https://example.org/zakres-dzialalnosci/): clinical genetics services described in general terms
+- [Publikacje / Publications](https://example.org/publikacje/): curated bibliography with DOI and PMID
+- [Współpraca i kontakt / Contact](https://example.org/wspolpraca-i-kontakt/): email contact for collaboration
+
+## Research areas
+
+- [Pulmogenetyka (Pulmogenetics)](https://example.org/nauka-i-projekty/pulmogenetyka/): The genetic basis of lung disease, including rare disorders — from alpha-1 antitrypsin deficiency to the determinants of pulmonary fibrosis.
+- [Choroby rzadkie i ultrarzadkie (Rare diseases)](https://example.org/nauka-i-projekty/choroby-rzadkie/): Molecular diagnosis of rare disorders, delineating the clinical picture of novel variants, and interdisciplinary scientific collaboration.
+- [Onkogenetyka (Oncogenetics)](https://example.org/nauka-i-projekty/onkogenetyka/): Genetic aspects of cancer susceptibility, diagnosis and prevention.
+- [Farmakogenetyka (Pharmacogenetics)](https://example.org/nauka-i-projekty/farmakogenetyka/): The relevance of genetic variability to individualised pharmacotherapy.
+- [Diagnostyka molekularna (Molecular diagnostics)](https://example.org/nauka-i-projekty/diagnostyka-molekularna/): Selecting and interpreting molecular and genomic tests in clinical practice — from gene panels to WES, WGS and RNA analysis.
+
+## Scientific profiles
+
+- [Google Scholar](https://scholar.google.com/citations?user=u0pbC3AAAAAJ&hl=pl)
+- [PubMed](https://pubmed.ncbi.nlm.nih.gov/?term=Jezela-Stanek+A)
+- [ORCID](https://orcid.org/0000-0001-9814-0324)
+
+## Selected publications
+
+- Protein Fragments: From Biomarkers to Therapeutic Targets — A Focus on α1-Antitrypsin-Derived Peptides. Mediators of Inflammation, 2026. https://doi.org/10.1155/mi/6516930
+- Genetic Determinants of Progressive Pulmonary Fibrosis: A Comprehensive Review. International Journal of Molecular Sciences, 2025. https://doi.org/10.3390/ijms262411846
+- Computational Tools to Assist in Analyzing Effects of the SERPINA1 Gene Variation on Alpha-1 Antitrypsin (AAT). Genes, 2024. https://doi.org/10.3390/genes15030340
+- Genetic and molecular backgrounds of the development of glioblastoma. Postępy Biochemii, 2024. https://doi.org/10.18388/pb.2021_495
+- The Epidermal Transcriptome Analysis of a Novel c.639_642dup LORICRIN Variant — Delineation of the Loricrin Keratoderma Pathology. International Journal of Molecular Sciences, 2023. https://doi.org/10.3390/ijms24119459
+- SERPINA1 and More? A Putative Genetic Contributor to Pulmonary Dysfunction in Alpha-1 Antitrypsin Deficiency. Journal of Clinical Medicine, 2023. https://doi.org/10.3390/jcm12051708
+
+## Notes
+
+- Research areas are fields of scientific interest, not a list of funded projects.
+- The website does not provide medical advice or interpret individual results.
