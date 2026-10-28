@@ -11,6 +11,7 @@ import { describe, expect, it } from "vitest";
 const OUT = join(import.meta.dirname, "..", "..", "out");
 const SITE = (process.env.EXPECT_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 const read = (p: string) => readFileSync(join(OUT, p), "utf8");
+const BASE = existsSync(join(OUT, "index.html")) ? (/(?:href|src)="([^"]*)\/_next\/static\//.exec(read("index.html"))?.[1] ?? "") : "";
 
 function htmlFiles(dir = OUT): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -143,7 +144,7 @@ describe.skipIf(!existsSync(OUT))("static export", () => {
     expect(privacy).toContain("nie używa plików cookie");
     expect(privacy).toContain("art. 13");
     expect(privacy).toContain("Prezesa Urzędu Ochrony Danych Osobowych");
-    for (const page of PAGES) expect(read(page), page).toContain('href="/polityka-prywatnosci/"');
+    for (const page of PAGES) expect(read(page), page).toContain(`href="${BASE}/polityka-prywatnosci/"`);
   });
 
   it("collects no data: no forms, file inputs or third-party scripts", () => {
