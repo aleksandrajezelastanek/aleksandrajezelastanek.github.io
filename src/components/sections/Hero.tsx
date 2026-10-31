@@ -22,7 +22,7 @@ function PortraitFigure({ locale }: { locale: Locale }) {
               alt={t(portrait.alt, locale)}
               width={portrait.width}
               height={portrait.height}
-              priority
+              preload
               sizes="(min-width: 1024px) 460px, 90vw"
               className="h-full w-full object-cover"
             />
