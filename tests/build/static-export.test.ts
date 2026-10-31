@@ -78,7 +78,7 @@ describe.skipIf(!existsSync(OUT))("static export", () => {
     const xml = read("sitemap.xml");
     expect(xml).toMatch(/^<\?xml/);
     const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    expect(locs.length).toBe(PAGES.length);
+    expect(locs.length).toBe(PAGES.length * (process.env.NEXT_PUBLIC_ENABLE_EN === "1" ? 2 : 1));
     for (const loc of locs) expect(loc).toMatch(/^https?:\/\/.+\/$/);
     if (SITE) expect(locs).toContain(`${SITE}/nauka-i-projekty/pulmogenetyka/`);
     expect(xml).not.toContain("lastmod");
