@@ -122,13 +122,13 @@ Sections with nothing to show are not rendered at all, so no empty headings or p
 
 ### Replace the portrait
 
-1. Put the authorised photograph in `public/images/`, e.g. `public/images/portrait.jpg`. Recommended: 4:5 ratio, at least 1200 × 1500 px, JPEG or WebP under 300 KB.
+1. Put the authorised photograph in `public/images/`, e.g. `public/images/portrait.jpg`. Recommended: 4:5 ratio, at least 1000 px wide, JPEG or WebP under 300 KB.
 2. In `src/data/profile.ts` set:
    ```ts
    export const portrait: Portrait = {
      src: "/images/portrait.jpg",
-     width: 1200,
-     height: 1500,
+     width: 1024,
+     height: 1280,
      alt: { pl: "Prof. Aleksandra Jezela-Stanek", en: "Prof. Aleksandra Jezela-Stanek" },
    };
    ```
