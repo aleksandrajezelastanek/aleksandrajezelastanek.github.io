@@ -53,9 +53,9 @@ export const identity = {
  * shows an abstract composition instead — never a generated likeness.
  */
 export const portrait: Portrait = {
-  src: null,
-  width: 1200,
-  height: 1500,
+  src: "/images/portrait.jpg",
+  width: 1024,
+  height: 1280,
   alt: {
     pl: "Prof. Aleksandra Jezela-Stanek",
     en: "Prof. Aleksandra Jezela-Stanek",
