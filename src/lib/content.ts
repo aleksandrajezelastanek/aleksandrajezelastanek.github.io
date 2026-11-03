@@ -1,4 +1,5 @@
-import type { L10n, Locale, Publication, PublicationCategory, Reviewable } from "@/data/types";
+import type { BookEntry, BookKind, L10n, Locale, Publication, PublicationCategory, Reviewable } from "@/data/types";
+import { books } from "@/data/books";
 import { publications } from "@/data/publications";
 import { researchAreas, researchProjects } from "@/data/research";
 import { contentPreview } from "./site";
@@ -65,4 +66,9 @@ export function publicationUrl(p: Publication): string | undefined {
   if (p.doi) return `https://doi.org/${p.doi}`;
   if (p.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/`;
   return p.url;
+}
+
+/** Publishable books and chapters of one kind, in the order of data/books.ts. */
+export function getBooks(kind?: BookKind): BookEntry[] {
+  return publishable(books).filter((b) => !kind || b.kind === kind);
 }

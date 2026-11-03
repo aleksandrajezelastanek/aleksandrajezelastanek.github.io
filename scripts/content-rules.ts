@@ -6,6 +6,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { affiliations, identity, portrait, scholarlyProfiles, timeline, biography } from "../src/data/profile.ts";
+import { books } from "../src/data/books.ts";
 import { publications } from "../src/data/publications.ts";
 import { researchAreas, researchProjects } from "../src/data/research.ts";
 import { partners } from "../src/data/partners.ts";
@@ -63,6 +64,7 @@ export function validateContent({ requireEnglish = false } = {}): Finding[] {
     ["research.researchAreas", researchAreas],
     ["research.researchProjects", researchProjects],
     ["publications", publications],
+    ["books", books],
     ["partners", partners],
     ["expertise", expertise],
   ];
@@ -85,6 +87,10 @@ export function validateContent({ requireEnglish = false } = {}): Finding[] {
   unique(
     "publications",
     publications.map((p) => p.id),
+  );
+  unique(
+    "books",
+    books.map((b) => b.id),
   );
   unique(
     "research.researchAreas",
@@ -136,6 +142,19 @@ export function validateContent({ requireEnglish = false } = {}): Finding[] {
   const featured = publications.filter((p) => p.featured && p.review.status === "verified");
   if (featured.length > 6) warn("publications", `${featured.length} featured publications — the homepage shows the newest 6`);
 
+  // Books and chapters
+  books.forEach((b) => {
+    const where = `book ${b.id}`;
+    // Incomplete entries may wait in the review queue, but nothing untitled may be published.
+    if (b.review.status === "verified" && !b.title.trim()) error(where, "missing title");
+    if (b.kind === "chapter" && !b.inBook) error(where, "chapter without inBook");
+    if (b.kind === "chapter" && b.review.status === "verified" && !b.authors?.length) error(where, "chapter without authors");
+    if (b.isbn && b.isbn.replace(/[-\s]/g, "").length !== 13) error(where, `malformed ISBN ${b.isbn}`);
+    for (const y of [b.year, b.inBook?.year]) if (y !== undefined && (y < 1950 || y > thisYear + 1)) error(where, `implausible year ${y}`);
+    if (b.url && !b.url.startsWith("https://")) warn(where, "URL is not https");
+    if (PLACEHOLDER.test(b.title)) error(where, "placeholder title");
+  });
+
   // Partners
   partners.forEach((p) => {
     if (p.logo) {
@@ -158,6 +177,7 @@ export function validateContent({ requireEnglish = false } = {}): Finding[] {
     ["researchAreas", researchAreas],
     ["researchProjects", researchProjects],
     ["partners", partners],
+    ["books", books],
     ["expertise", expertise],
     ["expertiseNotice", expertiseNotice],
     ["privacy", { privacyLead, privacySections, gdprClause, privacyChanges }],
@@ -180,6 +200,7 @@ export function reviewQueue(): { where: string; status: string; note?: string }[
     ["profile", [...scholarlyProfiles, ...affiliations, ...timeline] as never],
     ["research", [...researchAreas, ...researchProjects] as never],
     ["publications", publications as never],
+    ["books", books as never],
     ["partners", partners as never],
     ["expertise", expertise as never],
   ];

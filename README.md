@@ -158,6 +158,10 @@ Edit `src/data/publications.ts`. Copy metadata from PubMed, doi.org or the publi
 
 For long author lists, give the first three authors, set `authorCount` and, if the professor is the last author, `lastAuthor: "Jezela-Stanek A"`.
 
+### Add a book or chapter
+
+Books, edited volumes, chapters and other publications live in `src/data/books.ts` and appear in the "Książki i rozdziały" tab of `/publikacje/` (link straight to it with `/publikacje/#ksiazki`). Set `kind` to `edited`, `chapter` or `other`; a chapter names its book in `inBook`. Fill in only what the publisher or the professor confirmed — `year`, `isbn`, `series` and `url` are optional.
+
 Monographs and chapters (`type: "monograph" | "chapter"`) get their own section on `/publikacje/` automatically once at least one is verified. There is an example record in the file header.
 
 ### Add a research project

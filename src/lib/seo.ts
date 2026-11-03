@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { Locale, Publication } from "@/data/types";
+import type { BookEntry, Locale, Publication } from "@/data/types";
 import { getDictionary } from "@/content";
 import { affiliations, contact, identity, scholarlyProfiles } from "@/data/profile";
 import { AUTHOR_NAME } from "@/data/publications";
@@ -135,6 +135,30 @@ export function scholarlyArticleJsonLd(p: Publication): JsonLdObject {
     identifier: identifiers,
     ...(p.doi ? { url: `https://doi.org/${p.doi}`, sameAs: `https://doi.org/${p.doi}` } : {}),
     isPartOf: { "@type": "Periodical", name: p.venue },
+  };
+}
+
+/** Book or Chapter for an entry from data/books.ts. */
+export function bookJsonLd(b: BookEntry): JsonLdObject {
+  const person = (name: string) => (name.includes("Jezela-Stanek") ? { "@id": personId() } : { "@type": "Person", name });
+  const book = (title: string, publisher?: string, year?: number) => ({
+    "@type": "Book",
+    name: title,
+    ...(publisher ? { publisher: { "@type": "Organization", name: publisher } } : {}),
+    ...(year ? { datePublished: String(year) } : {}),
+  });
+  return {
+    "@context": "https://schema.org",
+    ...(b.inBook
+      ? { "@type": "Chapter", isPartOf: book(b.inBook.title, b.inBook.publisher, b.inBook.year) }
+      : book(b.title, b.publisher, b.year)),
+    name: b.title,
+    inLanguage: "pl",
+    ...(b.authors ? { author: b.authors.map(person) } : {}),
+    ...(b.editors ? { editor: b.editors.map(person) } : {}),
+    ...(b.isbn ? { isbn: b.isbn } : {}),
+    ...(b.series ? { isPartOf: { "@type": "BookSeries", name: b.series } } : {}),
+    ...(b.url ? { url: b.url } : {}),
   };
 }
 

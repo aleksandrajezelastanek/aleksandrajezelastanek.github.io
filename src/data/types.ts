@@ -162,6 +162,32 @@ export interface Publication extends Reviewable {
   featured?: boolean;
 }
 
+/** Books and chapters — kept apart from articles: they rarely have a DOI or PMID. */
+export type BookKind = "edited" | "chapter" | "other";
+
+export interface BookEntry extends Reviewable {
+  /** Stable id, e.g. "isbn:9788301229498" or a short slug. */
+  id: string;
+  kind: BookKind;
+  /** Title as printed (all current titles are in Polish). */
+  title: string;
+  /** Chapter or book authors, as printed. */
+  authors?: string[];
+  /** Scientific editors of the book itself ("Red. nauk."). */
+  editors?: string[];
+  /** For chapters: the book the chapter appeared in. */
+  inBook?: { title: string; publisher?: string; city?: string; year?: number };
+  publisher?: string;
+  city?: string;
+  series?: string;
+  year?: number;
+  isbn?: string;
+  /** Form of publication, e.g. "e-book (PDF)". */
+  format?: L10n;
+  description?: L10n;
+  url?: string;
+}
+
 /* ───────────────────────────── Partners ──────────────────────────── */
 
 export type PartnerRelation = "affiliation" | "academic" | "scientific" | "diagnostic" | "previous";

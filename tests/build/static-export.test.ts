@@ -11,6 +11,7 @@ import { describe, expect, it } from "vitest";
 const OUT = join(import.meta.dirname, "..", "..", "out");
 const SITE = (process.env.EXPECT_SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 const read = (p: string) => readFileSync(join(OUT, p), "utf8");
+/** Base path the export was built with (e.g. "/repo" on a GitHub project site), read from the asset URLs. */
 const BASE = existsSync(join(OUT, "index.html")) ? (/(?:href|src)="([^"]*)\/_next\/static\//.exec(read("index.html"))?.[1] ?? "") : "";
 
 function htmlFiles(dir = OUT): string[] {
@@ -78,6 +79,7 @@ describe.skipIf(!existsSync(OUT))("static export", () => {
     const xml = read("sitemap.xml");
     expect(xml).toMatch(/^<\?xml/);
     const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    // Polish pages, plus their English counterparts when the English version is enabled.
     expect(locs.length).toBe(PAGES.length * (process.env.NEXT_PUBLIC_ENABLE_EN === "1" ? 2 : 1));
     for (const loc of locs) expect(loc).toMatch(/^https?:\/\/.+\/$/);
     if (SITE) expect(locs).toContain(`${SITE}/nauka-i-projekty/pulmogenetyka/`);
@@ -137,6 +139,18 @@ describe.skipIf(!existsSync(OUT))("static export", () => {
     expect(pulmo).toContain("SERPINA1");
     expect(pulmo).toContain("10.3390/ijms262411846");
     expect(read("publikacje/index.html")).toContain('"@type":"ScholarlyArticle"');
+  });
+
+  it("lists books and chapters on the publications page, without unverified entries", () => {
+    const html = read("publikacje/index.html");
+    // The tab list is added by JavaScript; without it both panels are shown in full.
+    expect(html).not.toContain('role="tablist"');
+    expect(html).toContain("Genetyka w chorobach układu oddechowego");
+    expect(html).toContain("ISBN 978-83-01-22949-8");
+    expect(html).toContain("Terapie spersonalizowane w leczeniu padaczek");
+    expect(html).toContain("Choroby rzadkie i niewyjaśnione wśród kompozytorów muzyki klasycznej");
+    expect(html).toContain('"@type":"Chapter"');
+    if (process.env.NEXT_PUBLIC_CONTENT_PREVIEW !== "1") expect(html).not.toContain("Wrodzone choroby metaboliczne w praktyce klinicznej");
   });
 
   it("publishes the privacy notice and links to it from every page", () => {

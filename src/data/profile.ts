@@ -49,7 +49,7 @@ export const identity = {
 
 /**
  * Portrait. Put an authorised photograph in /public/images and set `src`
- * (recommended: 1200 × 1500 px, 4:5, JPEG/WebP). With `src: null` the hero
+ * (recommended: 4:5, at least 1000 px wide, JPEG/WebP). With `src: null` the hero
  * shows an abstract composition instead — never a generated likeness.
  */
 export const portrait: Portrait = {

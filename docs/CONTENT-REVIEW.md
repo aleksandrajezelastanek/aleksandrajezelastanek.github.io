@@ -17,6 +17,7 @@ This website concerns medicine and science, so every fact must be traceable to a
 | Google Scholar and PubMed links | Brief; both URLs respond |
 | ORCID 0000-0001-9814-0324 | Public ORCID record whose name and affiliations match (IGiChP, IP-CZD). **Please confirm.** |
 | 11 publications | PubMed E-utilities metadata, copied 2026-10-23 |
+| Books, chapters and other publications (`src/data/books.ts`) | List provided 2026-11-03 |
 
 ### Hidden until confirmed (`requiresReview`)
 
@@ -41,10 +42,13 @@ All English texts are **drafts**. The English version is not built until `NEXT_P
 
 ## Still needed from the professor
 
-1. An authorised portrait (4:5, at least 1200 × 1500 px), with the photographer credit if required.
+1. The photographer credit for the portrait, if one is required (the photograph itself is in `public/images/portrait.jpg`).
 2. Approval of the biography and the descriptions listed above.
 3. Confirmation of the ORCID iD and of the IP-CZD years (for the timeline).
-4. Her own list of selected publications, plus monographs and book chapters (title, publisher, year, ISBN).
+4. Her own list of selected publications. Books and chapters (from the list of 2026-11-03) are in `src/data/books.ts`; still missing:
+   - links to the publisher's pages or catalogue entries (the list named them but gave no URLs);
+   - year and ISBN of *Genetyka w chorobach układu oddechowego*; editors, publisher, year and ISBN of *Onkogenetyka*; publisher and year of *Autyzm u dzieci. Wiedza kliniczna*;
+   - the chapter in *Wrodzone choroby metaboliczne w praktyce klinicznej* (Patryk Lipiński): chapter title and authors. Hidden until completed.
 5. Details of confirmed research projects, if they should be shown: title, status, role, institutions, funding, years.
 6. The nature of each collaboration (People4People, GeneAware, 3billion, CENTOGENE), and permission if logos should be shown.
 7. Any additional profiles to link (institutional staff page, ResearchGate, Scopus Author ID).
